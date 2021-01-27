@@ -1,0 +1,21 @@
+name: "NSW Design System"
+description: "A theme using NSW Design system"
+type: theme
+core: 8.x
+core_version_requirement: ^8 || ^9
+base theme: classy
+
+libraries:
+  - nsw_design_system/global-styling
+
+regions:
+  header: 'Header'
+  banner: 'Banner'
+  breadcrumb: 'Breadcrumbs'
+  content: 'Content'
+  sidebar: 'Sidebar'
+  content_bottom: 'Content Bottom'
+  featured_bottom: 'Featured Bottom'
+  footer_upper: 'Footer Upper'
+  footer_text: 'Footer Text'
+  footer_lower: 'Footer Lower'

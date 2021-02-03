@@ -43,53 +43,59 @@
  */
 #}
 <div class="layout-container">
-
-  <header role="banner">
-    {{ page.header }}
-  </header>
-  {{ page.primary_menu }}
-  {{ page.secondary_menu }}
-
-  {{ page.breadcrumb }}
-
-  {{ page.highlighted }}
-
-  {{ page.help }}
-
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-    <div class="nsw-container">
-      <div class="nsw-page-layout">
-        <div class="nsw-page-layout__main">
-          {{ page.content }}
-        </div>{# /.layout-content #}
-
-        {% if page.sidebar_first %}
-          <aside class="nsw-page-layout__sidebar nsw-page-layout__sidebar--desktop" role="complementary">
-            {{ page.sidebar_first }}
-          </aside>
-        {% endif %}
-
-        {% if page.sidebar_second %}
-          <aside class="nsw-page-layout__sidebar" role="complementary">
-            {{ page.sidebar_second }}
-          </aside>
-        {% endif %}</div>
-    </div>
-  </main>
-  <footer class="nsw-footer">
-  {% if page.footer_upper %}
-    <div class="nsw-footer__upper">
-        {{ page.footer_upper }}
-    </div>
+  {% if page.header %}
+    {% include '@nsw_design_system/partial/header.html.twig' %}
   {% endif %}
+
+  {% if page.breadcrumb %}
+    {# breadcrumb #}
+    <div class="nsw-container">
+      {{ page.breadcrumb }}
+    </div>
+    {# EOF:breadcrumb #}
+  {% endif %}
+
+  <div class="nsw-container nsw-p-top-sm nsw-p-bottom-lg">
+    <div class="nsw-page-layout">
+      {% if page.sidenav_left %}
+        {# sidenav-left #}
+        <section class="nsw-page-layout__sidebar nsw-page-layout__sidebar--desktop">
+           {{ page.sidenav_left }}
+        </section>
+        {# EOF:sidenav-left #}
+      {% endif %}
+      <main role="main" class="nsw-page-layout__main">
+        <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+        <div class="nsw-container">
+          <div class="nsw-page-layout">
+            <div class="nsw-page-layout__main">
+              {{ page.content }}
+            </div>{# /.layout-content #}
+          </div>
+        </div>
+      </main>
+      {% if page.sidenav_right %}
+        {# sidenav-right #}
+        <section class="nsw-page-layout__sidebar">
+          {{ page.sidenav_right }}
+        </section>
+        {# EOF:sidenav-right #}
+      {% endif %}
+    </div>
+  </div>
+  <footer class="nsw-footer">
+    {% if page.footer_upper %}
+      <div class="nsw-footer__upper">
+        {{ page.footer_upper }}
+      </div>
+    {% endif %}
     <div class="nsw-footer__lower">
       <div class="nsw-container">
         <p>{{ page.footer_text }}</p>
         <hr>
-      {% if page.footer_lower %}
-        {{ page.footer_lower }}
-      {% endif %}
+        {% if page.footer_lower %}
+          {{ page.footer_lower }}
+        {% endif %}
         <p>Copyright © {{ "now"|date("Y") }}</p>
       </div>
     </div>

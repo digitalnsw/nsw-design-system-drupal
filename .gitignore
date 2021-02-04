@@ -4,6 +4,8 @@ docroot/sites/*/files
 docroot/sites/*/private
 docroot/sites/*/settings.local.php
 docroot/sites/*/settings.php
+web/sites/*/files
+web/sites/default/files/php/twig
 
 /.settings/
 /.buildpath
@@ -26,3 +28,5 @@ docroot/sites/*/settings.php
 *.sql
 *.sql.gz
 node_modules/
+fe-src/node_modules/
+
